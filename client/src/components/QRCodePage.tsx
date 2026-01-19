@@ -8,8 +8,8 @@ interface QRCodePageProps {
 
 export default function QRCodePage({ onClose }: QRCodePageProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  // Lấy URL hiện tại của website
-  const [url] = useState(window.location.origin)
+  // Link production cố định
+  const [url] = useState('https://hanhtrinhchanly.vercel.app')
 
   useEffect(() => {
     if (canvasRef.current) {
