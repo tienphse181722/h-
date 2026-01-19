@@ -4,6 +4,7 @@ import Stage1Sensory from './components/Stage1Sensory'
 import Stage2Rational from './components/Stage2Rational'
 import Stage3Practice from './components/Stage3Practice'
 import Stage4Verification from './components/Stage4Verification'
+import QRCodePage from './components/QRCodePage'
 
 function App() {
   const [started, setStarted] = useState(false)
@@ -13,6 +14,7 @@ function App() {
   const [selectedCharacteristics, setSelectedCharacteristics] = useState<string[]>([])
   const [selectedAction, setSelectedAction] = useState<string | null>(null)
   const [currentStage, setCurrentStage] = useState(1)
+  const [showQRCode, setShowQRCode] = useState(false)
 
   const handleStart = (selectedApproach: string, randomObjects: any[]) => {
     setApproach(selectedApproach)
@@ -45,7 +47,23 @@ function App() {
   }
 
   if (!started || objects.length === 0) {
-    return <TopicInput onStart={handleStart} />
+    return (
+      <>
+        {/* QR Code Button */}
+        <button
+          onClick={() => setShowQRCode(true)}
+          className="fixed top-4 right-4 z-40 px-4 py-2 sm:px-5 sm:py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl font-bold hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg flex items-center gap-2"
+        >
+          <span className="text-xl">📱</span>
+          <span className="hidden sm:inline">QR Code</span>
+        </button>
+
+        {/* QR Code Modal */}
+        {showQRCode && <QRCodePage onClose={() => setShowQRCode(false)} />}
+
+        <TopicInput onStart={handleStart} />
+      </>
+    )
   }
 
   // Convert object to format for Stage3
@@ -62,6 +80,18 @@ function App() {
 
   return (
     <div className="relative">
+      {/* QR Code Button - Fixed top right */}
+      <button
+        onClick={() => setShowQRCode(true)}
+        className="fixed top-4 right-4 z-40 px-4 py-2 sm:px-5 sm:py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl font-bold hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg flex items-center gap-2"
+      >
+        <span className="text-xl">📱</span>
+        <span className="hidden sm:inline">QR Code</span>
+      </button>
+
+      {/* QR Code Modal */}
+      {showQRCode && <QRCodePage onClose={() => setShowQRCode(false)} />}
+
       {/* Stage 1: Choose from 5 objects */}
       {currentStage >= 1 && (
         <Stage1Sensory objects={objects} onObjectSelected={handleObjectSelected} />
