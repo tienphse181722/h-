@@ -24,15 +24,6 @@ export default function QRCodePage({ onClose }: QRCodePageProps) {
     }
   }, [url])
 
-  const handleDownload = () => {
-    if (canvasRef.current) {
-      const link = document.createElement('a')
-      link.download = 'hanh-trinh-tri-thuc-qr.png'
-      link.href = canvasRef.current.toDataURL()
-      link.click()
-    }
-  }
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
