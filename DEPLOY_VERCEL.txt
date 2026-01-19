@@ -1,0 +1,104 @@
+========================================
+HƯỚNG DẪN DEPLOY LÊN VERCEL
+========================================
+
+CÁCH 1: SỬ DỤNG VERCEL CLI (Đã cài sẵn)
+========================================
+
+Bước 1: Đăng nhập Vercel
+-------------------------
+Mở Command Prompt/PowerShell và chạy:
+
+vercel login
+
+→ Chọn phương thức đăng nhập (GitHub, GitLab, Email)
+→ Xác thực trong browser
+
+
+Bước 2: Deploy từ thư mục client
+---------------------------------
+cd client
+vercel --prod
+
+→ Trả lời các câu hỏi:
+  - Set up and deploy? → Y (Yes)
+  - Which scope? → Chọn account của bạn
+  - Link to existing project? → N (No) - tạo project mới
+  - What's your project's name? → hanh-trinh-tri-thuc (hoặc tên bạn muốn)
+  - In which directory is your code located? → ./ (enter)
+  - Want to override the settings? → N (No)
+
+→ Vercel sẽ tự động:
+  - Build project (npm run build)
+  - Upload lên Vercel
+  - Trả về URL production
+
+
+CÁCH 2: SỬ DỤNG VERCEL DASHBOARD (DỄ HƠN)
+==========================================
+
+1. Truy cập: https://vercel.com/
+2. Đăng nhập bằng GitHub
+3. Click "Add New" → "Project"
+4. Import repository: tienphse181722/h-
+5. Configure:
+   - Framework Preset: Vite
+   - Root Directory: client
+   - Build Command: npm run build
+   - Output Directory: dist
+6. Click "Deploy"
+
+
+CÁCH 3: DEPLOY TỰ ĐỘNG TỪ GITHUB
+=================================
+
+1. Push code lên GitHub (đã xong ✅)
+2. Truy cập Vercel Dashboard
+3. Import repository từ GitHub
+4. Vercel sẽ tự động deploy mỗi khi push code mới
+
+
+========================================
+LƯU Ý QUAN TRỌNG
+========================================
+
+✅ Vercel CLI đã được cài đặt (version 50.4.6)
+✅ Code đã được push lên GitHub
+✅ File vercel.json đã được tạo
+
+⚠️ Cần đăng nhập Vercel trước khi deploy
+⚠️ Lần đầu deploy cần trả lời một số câu hỏi
+⚠️ Sau khi setup xong, deploy tự động mỗi lần push
+
+
+========================================
+LỆNH NHANH
+========================================
+
+# Đăng nhập
+vercel login
+
+# Deploy production
+cd client
+vercel --prod
+
+# Xem danh sách deployments
+vercel ls
+
+# Xem logs
+vercel logs
+
+
+========================================
+KẾT QUẢ SAU KHI DEPLOY
+========================================
+
+Bạn sẽ nhận được:
+✅ Production URL: https://your-project.vercel.app
+✅ Preview URL cho mỗi commit
+✅ Tự động deploy khi push code mới
+✅ SSL certificate miễn phí
+✅ CDN toàn cầu
+
+
+========================================
