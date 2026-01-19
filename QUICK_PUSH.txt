@@ -1,0 +1,80 @@
+========================================
+HƯỚNG DẪN PUSH CODE LÊN GITHUB
+========================================
+
+BƯỚC 1: Cài Git (nếu chưa có)
+------------------------------
+Tải tại: https://git-scm.com/download/win
+Cài đặt và khởi động lại terminal
+
+
+BƯỚC 2: Mở Command Prompt/PowerShell tại thư mục này
+-----------------------------------------------------
+Nhấn chuột phải vào thư mục → "Open in Terminal"
+
+
+BƯỚC 3: Chạy 3 lệnh sau (copy và paste):
+-----------------------------------------
+
+git init
+git remote add origin https://github.com/tienphse181722/h-.git
+git add .
+git commit -m "Update: Stage2 filtering, harder Stage3, cleanup files"
+git push -u origin main
+
+
+Nếu lỗi "remote origin already exists":
+----------------------------------------
+git remote set-url origin https://github.com/tienphse181722/h-.git
+git add .
+git commit -m "Update: Stage2 filtering, harder Stage3, cleanup files"
+git push -u origin main
+
+
+Nếu cần đăng nhập:
+------------------
+- Username: tienphse181722
+- Password: Dùng Personal Access Token (không phải password GitHub)
+
+Tạo token tại: https://github.com/settings/tokens
+Chọn: Generate new token (classic)
+Quyền cần: repo (full control)
+
+
+========================================
+HOẶC SỬ DỤNG GITHUB DESKTOP (DỄ HƠN)
+========================================
+
+1. Tải GitHub Desktop: https://desktop.github.com/
+2. Đăng nhập GitHub
+3. File → Add Local Repository
+4. Chọn thư mục: C:\Users\Hi\Desktop\hí
+5. Commit và Push
+
+
+========================================
+NỘI DUNG ĐÃ THAY ĐỔI
+========================================
+
+✅ Stage2Rational.tsx:
+   - Chỉ hiển thị 12 đặc điểm (thay vì tất cả)
+   - Lọc bỏ icon trùng với đáp án
+   - Lọc bỏ text chứa tên đáp án
+   - Fallback logic khi không đủ đặc điểm
+
+✅ objects.ts:
+   - Sửa icon "Có mùi thơm" từ 🌸 → 👃
+   - Cập nhật verificationAction cho tất cả 18 objects
+   - Câu trả lời sai khó hơn, có logic hơn
+
+✅ Server cleanup:
+   - Xóa 7 files không dùng (routes, models, services)
+   - Xóa 4 folders rỗng
+   - Cập nhật server/src/index.ts
+   - Cập nhật server/package.json
+
+✅ Files mới:
+   - push-to-github.bat (script tự động push)
+   - QUICK_PUSH.txt (hướng dẫn này)
+
+========================================

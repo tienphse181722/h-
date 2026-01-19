@@ -1,0 +1,19 @@
+{
+  "name": "knowledge-journey",
+  "version": "1.0.0",
+  "description": "Interactive Knowledge Journey Website",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && npm run dev"
+  },
+  "keywords": ["education", "interactive", "knowledge"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "mongoose": "^8.1.0"
+  }
+}
