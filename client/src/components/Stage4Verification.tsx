@@ -39,10 +39,16 @@ export default function Stage4Verification({ scenario, selectedCharacteristics, 
     
     // Bắn pháo hoa khi đúng!
     if (isGuessCorrect) {
-      // Pháo hoa từ 2 bên
+      // Pháo hoa từ 2 bên - responsive cho mobile
       const duration = 3000
       const animationEnd = Date.now() + duration
-      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 }
+      const isMobile = window.innerWidth < 640
+      const defaults = { 
+        startVelocity: isMobile ? 25 : 30, 
+        spread: 360, 
+        ticks: isMobile ? 50 : 60, 
+        zIndex: 0 
+      }
 
       function randomInRange(min: number, max: number) {
         return Math.random() * (max - min) + min
@@ -55,20 +61,26 @@ export default function Stage4Verification({ scenario, selectedCharacteristics, 
           return clearInterval(interval)
         }
 
-        const particleCount = 50 * (timeLeft / duration)
+        const particleCount = (isMobile ? 30 : 50) * (timeLeft / duration)
         
         // Bắn từ bên trái
         confetti({
           ...defaults,
           particleCount,
-          origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+          origin: { 
+            x: randomInRange(isMobile ? 0.05 : 0.1, isMobile ? 0.25 : 0.3), 
+            y: Math.random() - 0.2 
+          }
         })
         
         // Bắn từ bên phải
         confetti({
           ...defaults,
           particleCount,
-          origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+          origin: { 
+            x: randomInRange(isMobile ? 0.75 : 0.7, isMobile ? 0.95 : 0.9), 
+            y: Math.random() - 0.2 
+          }
         })
       }, 250)
     }
