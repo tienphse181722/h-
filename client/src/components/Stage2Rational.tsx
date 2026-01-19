@@ -227,7 +227,7 @@ export default function Stage2Rational({ object, approach, onCharacteristicsSele
         </motion.div>
 
         {/* Characteristics Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 max-w-6xl mx-auto px-4">
           {filteredCharacteristics.map((char: any, index: number) => {
             const isSelected = selectedChars.has(char.text)
             

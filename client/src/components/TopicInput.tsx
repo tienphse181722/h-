@@ -49,17 +49,17 @@ export default function TopicInput({ onStart }: TopicInputProps) {
         ))}
       </div>
 
-      <div className="relative z-10 w-full max-w-2xl">
+      <div className="relative z-10 w-full max-w-2xl px-4">
         {/* Header */}
         <motion.div
           initial={{ y: -30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="text-center mb-12"
+          className="text-center mb-8 md:mb-12"
         >
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-3 md:mb-4">
             Hành trình Tri thức
           </h1>
-          <p className="text-xl text-white/80">
+          <p className="text-lg sm:text-xl text-white/80">
             Cùng khám phá cách bạn nhận biết thế giới
           </p>
         </motion.div>
@@ -69,17 +69,17 @@ export default function TopicInput({ onStart }: TopicInputProps) {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="bg-white rounded-3xl shadow-2xl p-8 md:p-10"
+          className="bg-white rounded-2xl md:rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10"
         >
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">
             Bạn thường hiểu mọi thứ bằng cách nào?
           </h2>
-          <p className="text-gray-500 mb-8">
+          <p className="text-sm sm:text-base text-gray-500 mb-6 md:mb-8">
             Chọn cách mà bạn hay dùng nhất
           </p>
 
           {/* Approach options */}
-          <div className="space-y-4 mb-8">
+          <div className="space-y-3 md:space-y-4 mb-6 md:mb-8">
             {approaches.map((approach, idx) => (
               <motion.button
                 key={approach.id}
@@ -87,14 +87,14 @@ export default function TopicInput({ onStart }: TopicInputProps) {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.3 + idx * 0.1 }}
                 onClick={() => setSelectedApproach(approach.id)}
-                className={`w-full p-5 rounded-2xl text-left transition-all border-2 ${
+                className={`w-full p-4 sm:p-5 rounded-xl md:rounded-2xl text-left transition-all border-2 ${
                   selectedApproach === approach.id
                     ? 'border-purple-500 bg-purple-50 shadow-lg scale-105'
                     : 'border-gray-200 hover:border-gray-300 hover:shadow-md'
                 }`}
               >
-                <div className="flex items-center gap-4">
-                  <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${approach.color} flex items-center justify-center text-2xl shadow-lg`}>
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br ${approach.color} flex items-center justify-center text-xl sm:text-2xl shadow-lg`}>
                     {approach.icon}
                   </div>
                   <div className="flex-1">

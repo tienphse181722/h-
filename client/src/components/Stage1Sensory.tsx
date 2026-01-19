@@ -32,11 +32,11 @@ export default function Stage1Sensory({ objects, onObjectSelected }: Stage1Props
       }}
     >
       {/* Title */}
-      <div className="absolute top-20 left-0 right-0 text-center z-20">
+      <div className="absolute top-16 sm:top-20 left-0 right-0 text-center z-20 px-4">
         <motion.h2
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="text-4xl md:text-5xl font-bold text-white mb-3"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 md:mb-3"
         >
           Thực tiễn
         </motion.h2>
@@ -44,14 +44,14 @@ export default function Stage1Sensory({ objects, onObjectSelected }: Stage1Props
           initial={{ y: -30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="text-lg md:text-xl text-white/90"
+          className="text-base sm:text-lg md:text-xl text-white/90"
         >
           Chọn một hình để bắt đầu
         </motion.p>
       </div>
 
       {/* 5 partially hidden images */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 max-w-6xl px-4">
         {objects.map((obj, index) => (
           <motion.button
             key={obj.id}
