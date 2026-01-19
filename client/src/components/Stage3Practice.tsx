@@ -59,12 +59,12 @@ export default function Stage3Practice({ scenario, onActionSelected }: Stage3Pro
         <motion.div
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-2 sm:mb-3">
             Lý tính
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-base sm:text-lg text-gray-600">
             Chọn một hành động để kiểm chứng
           </p>
         </motion.div>
@@ -72,7 +72,7 @@ export default function Stage3Practice({ scenario, onActionSelected }: Stage3Pro
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className="bg-white rounded-3xl shadow-2xl p-8 relative"
+          className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-5 sm:p-8 relative"
         >
           {/* Error message */}
           {showError && (
@@ -80,19 +80,19 @@ export default function Stage3Practice({ scenario, onActionSelected }: Stage3Pro
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0, opacity: 0 }}
-              className="absolute -top-20 left-1/2 transform -translate-x-1/2 z-10"
+              className="absolute -top-16 sm:-top-20 left-1/2 transform -translate-x-1/2 z-10 w-[90%] sm:w-auto"
             >
-              <div className="bg-red-500 text-white px-6 py-4 rounded-xl shadow-2xl">
-                <p className="font-bold">⚠️ Hành động này không đúng!</p>
+              <div className="bg-red-500 text-white px-4 sm:px-6 py-3 sm:py-4 rounded-xl shadow-2xl">
+                <p className="font-bold text-sm sm:text-base">⚠️ Hành động này không đúng!</p>
               </div>
             </motion.div>
           )}
 
-          <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+          <h3 className="text-lg sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 text-center">
             Bạn sẽ làm gì để kiểm chứng?
           </h3>
           
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {scenario.actions.map((action, idx) => {
               const isSelected = selectedAction === action.text
               const showWrong = isSelected && !action.correct && showError
@@ -101,7 +101,7 @@ export default function Stage3Practice({ scenario, onActionSelected }: Stage3Pro
                 <motion.button
                   key={idx}
                   onClick={() => handleActionSelect(action.text, action.correct)}
-                  className={`w-full p-6 text-left rounded-xl border-2 transition-all ${
+                  className={`w-full p-4 sm:p-6 text-left rounded-xl border-2 transition-all ${
                     showWrong
                       ? 'border-red-500 bg-red-100 shadow-lg'
                       : isSelected
@@ -115,13 +115,13 @@ export default function Stage3Practice({ scenario, onActionSelected }: Stage3Pro
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2 sm:gap-3">
                     {isSelected && (
-                      <span className="text-2xl">
+                      <span className="text-xl sm:text-2xl">
                         {action.correct ? '✓' : showError ? '❌' : ''}
                       </span>
                     )}
-                    <p className="text-lg font-semibold text-gray-800 flex-1">{action.text}</p>
+                    <p className="text-sm sm:text-lg font-semibold text-gray-800 flex-1">{action.text}</p>
                   </div>
                 </motion.button>
               )
@@ -145,26 +145,26 @@ export default function Stage3Practice({ scenario, onActionSelected }: Stage3Pro
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            className="w-full mt-8"
+            className="w-full mt-6 sm:mt-8"
           >
             {selectedAction && selectedActionCorrect ? (
               <button
                 onClick={handleProceed}
-                className="w-full px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-2xl text-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all shadow-lg"
+                className="w-full px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-2xl text-base sm:text-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all shadow-lg"
               >
                 Tiếp tục
               </button>
             ) : selectedAction && !selectedActionCorrect ? (
               <button
                 disabled
-                className="w-full px-8 py-4 bg-gray-200 text-gray-500 rounded-2xl text-lg font-semibold cursor-not-allowed"
+                className="w-full px-6 sm:px-8 py-3 sm:py-4 bg-gray-200 text-gray-500 rounded-2xl text-base sm:text-lg font-semibold cursor-not-allowed"
               >
                 Chọn lại xem
               </button>
             ) : (
               <button
                 disabled
-                className="w-full px-8 py-4 bg-gray-100 text-gray-400 rounded-2xl text-lg font-semibold cursor-not-allowed"
+                className="w-full px-6 sm:px-8 py-3 sm:py-4 bg-gray-100 text-gray-400 rounded-2xl text-base sm:text-lg font-semibold cursor-not-allowed"
               >
                 Chọn một hành động
               </button>

@@ -283,12 +283,12 @@ export default function Stage4Verification({ scenario, selectedCharacteristics, 
         <motion.div
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">
             Thực tiễn kiểm chứng
           </h2>
-          <p className="text-xl text-white/90">
+          <p className="text-lg sm:text-xl text-white/90">
             Đưa ra kết luận của bạn
           </p>
         </motion.div>
@@ -297,9 +297,9 @@ export default function Stage4Verification({ scenario, selectedCharacteristics, 
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className="bg-white/10 backdrop-blur-xl rounded-3xl shadow-2xl p-8 mb-8 border border-white/20"
+          className="bg-white/10 backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-2xl p-5 sm:p-8 mb-6 sm:mb-8 border border-white/20"
         >
-          <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+          <h3 className="text-lg sm:text-2xl font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
             <span>📝</span> Những gì bạn đã biết:
           </h3>
           <div className="flex flex-wrap gap-3 mb-6">
@@ -321,11 +321,11 @@ export default function Stage4Verification({ scenario, selectedCharacteristics, 
             )}
           </div>
           
-          <div className="border-t border-white/30 pt-6">
-            <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
+          <div className="border-t border-white/30 pt-4 sm:pt-6">
+            <h3 className="text-base sm:text-xl font-bold text-white mb-2 sm:mb-3 flex items-center gap-2">
               <span>⚡</span> Bạn đã thử:
             </h3>
-            <div className="bg-white/20 backdrop-blur-sm text-white px-4 py-3 rounded-xl font-medium border border-white/30">
+            <div className="bg-white/20 backdrop-blur-sm text-white px-3 sm:px-4 py-2 sm:py-3 rounded-xl text-sm sm:text-base font-medium border border-white/30">
               {selectedAction}
             </div>
           </div>
@@ -336,7 +336,7 @@ export default function Stage4Verification({ scenario, selectedCharacteristics, 
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="bg-white/10 backdrop-blur-xl rounded-3xl shadow-2xl p-10 border border-white/20 relative"
+          className="bg-white/10 backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-2xl p-5 sm:p-10 border border-white/20 relative"
         >
           {/* Error message */}
           {showError && (
@@ -344,29 +344,29 @@ export default function Stage4Verification({ scenario, selectedCharacteristics, 
               initial={{ scale: 0, y: -20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0, y: -20 }}
-              className="absolute -top-20 left-1/2 transform -translate-x-1/2 z-20"
+              className="absolute -top-16 sm:-top-20 left-1/2 transform -translate-x-1/2 z-20 w-[90%] sm:w-auto"
             >
-              <div className="bg-red-500 text-white px-8 py-4 rounded-2xl shadow-2xl flex items-center gap-3">
-                <span className="text-3xl">❌</span>
+              <div className="bg-red-500 text-white px-4 sm:px-8 py-3 sm:py-4 rounded-2xl shadow-2xl flex items-center gap-2 sm:gap-3">
+                <span className="text-2xl sm:text-3xl">❌</span>
                 <div>
-                  <p className="font-bold text-lg">Chưa đúng rồi!</p>
-                  <p className="text-sm">Hãy thử lại nhé</p>
+                  <p className="font-bold text-sm sm:text-lg">Chưa đúng rồi!</p>
+                  <p className="text-xs sm:text-sm">Hãy thử lại nhé</p>
                 </div>
               </div>
             </motion.div>
           )}
 
-          <div className="mb-8">
-            <label className="block text-white text-2xl font-bold mb-6 text-center">
+          <div className="mb-6 sm:mb-8">
+            <label className="block text-white text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center">
               Theo bạn, đây là gì?
             </label>
-            <p className="text-white/80 text-center mb-6">
+            <p className="text-white/80 text-center text-sm sm:text-base mb-4 sm:mb-6">
               Chọn một đáp án
             </p>
           </div>
 
           {/* Multiple choice options */}
-          <div className="space-y-4 mb-6">
+          <div className="space-y-3 sm:space-y-4 mb-4 sm:mb-6">
             {[scenario.correctGuess, ...scenario.wrongGuesses]
               .sort(() => Math.random() - 0.5)
               .map((option, idx) => {
@@ -388,7 +388,7 @@ export default function Stage4Verification({ scenario, selectedCharacteristics, 
                       scale: { duration: 0.3 }
                     }}
                     onClick={() => handleGuessSelect(option)}
-                    className={`w-full p-5 text-left rounded-2xl border-2 transition-all ${
+                    className={`w-full p-4 sm:p-5 text-left rounded-xl sm:rounded-2xl border-2 transition-all ${
                       showWrong
                         ? 'border-red-500 bg-red-500/30 shadow-2xl'
                         : isSelected
@@ -400,8 +400,8 @@ export default function Stage4Verification({ scenario, selectedCharacteristics, 
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <div className="flex items-center gap-4">
-                      <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
+                    <div className="flex items-center gap-3 sm:gap-4">
+                      <div className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 flex items-center justify-center ${
                         showWrong
                           ? 'border-red-500 bg-red-500'
                           : isSelected
@@ -414,17 +414,17 @@ export default function Stage4Verification({ scenario, selectedCharacteristics, 
                           <motion.div
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
-                            className={`text-sm ${
+                            className={`text-xs sm:text-sm ${
                               showWrong ? '❌' : isCorrect ? '✓' : ''
                             }`}
                           >
                             {showWrong ? '❌' : isCorrect ? '✓' : (
-                              <div className="w-3 h-3 rounded-full bg-purple-600" />
+                              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-purple-600" />
                             )}
                           </motion.div>
                         )}
                       </div>
-                      <p className="text-xl font-semibold text-white flex-1">
+                      <p className="text-base sm:text-xl font-semibold text-white flex-1">
                         {option}
                       </p>
                     </div>

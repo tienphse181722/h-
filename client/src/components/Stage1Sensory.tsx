@@ -26,17 +26,17 @@ export default function Stage1Sensory({ objects, onObjectSelected }: Stage1Props
     <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="min-h-screen flex items-center justify-center relative overflow-hidden py-20 px-4"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden py-16 sm:py-20 px-3 sm:px-4"
       style={{
         background: 'linear-gradient(135deg, #1e3a8a 0%, #7c3aed 50%, #ec4899 100%)'
       }}
     >
       {/* Title */}
-      <div className="absolute top-16 sm:top-20 left-0 right-0 text-center z-20 px-4">
+      <div className="absolute top-8 sm:top-12 md:top-16 left-0 right-0 text-center z-20 px-3">
         <motion.h2
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 md:mb-3"
+          className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2"
         >
           Thực tiễn
         </motion.h2>
@@ -44,14 +44,14 @@ export default function Stage1Sensory({ objects, onObjectSelected }: Stage1Props
           initial={{ y: -30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="text-base sm:text-lg md:text-xl text-white/90"
+          className="text-xs sm:text-sm md:text-base text-white/90"
         >
           Chọn một hình để bắt đầu
         </motion.p>
       </div>
 
       {/* 5 partially hidden images */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 max-w-6xl px-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-2.5 w-full max-w-4xl mt-16 sm:mt-20">
         {objects.map((obj, index) => (
           <motion.button
             key={obj.id}
@@ -63,17 +63,17 @@ export default function Stage1Sensory({ objects, onObjectSelected }: Stage1Props
             transition={{ delay: 0.3 + index * 0.1, type: 'spring' }}
             onClick={() => handleSelect(obj)}
             disabled={selectedObject !== null}
-            className="relative group"
+            className="relative group w-full aspect-square"
           >
             {/* Card container */}
             <motion.div
-              className="w-48 h-48 rounded-2xl bg-white shadow-2xl overflow-hidden relative"
-              whileHover={!selectedObject ? { scale: 1.05, rotate: 2 } : {}}
+              className="w-full h-full rounded-lg sm:rounded-xl bg-white shadow-lg overflow-hidden relative"
+              whileHover={!selectedObject ? { scale: 1.03, rotate: 1 } : {}}
               whileTap={!selectedObject ? { scale: 0.98 } : {}}
             >
               {/* Full emoji - positioned to show only bottom-right corner - ALWAYS */}
               <div 
-                className="absolute text-[200px] leading-none"
+                className="absolute text-[80px] sm:text-[100px] md:text-[120px] leading-none"
                 style={{
                   bottom: '-60%',
                   right: '-60%',
@@ -96,7 +96,7 @@ export default function Stage1Sensory({ objects, onObjectSelected }: Stage1Props
 
                 {/* Question mark in center - only show when NOT selected */}
                 {!selectedObject && (
-                  <div className="absolute inset-0 flex items-center justify-center text-white text-7xl font-bold pointer-events-none z-10">
+                  <div className="absolute inset-0 flex items-center justify-center text-white text-2xl sm:text-3xl md:text-4xl font-bold pointer-events-none z-10">
                     ?
                   </div>
                 )}
@@ -106,13 +106,13 @@ export default function Stage1Sensory({ objects, onObjectSelected }: Stage1Props
               {selectedObject?.id === obj.id && (
                 <>
                   {/* Green border */}
-                  <div className="absolute inset-0 border-8 border-green-500 rounded-2xl pointer-events-none z-30"></div>
+                  <div className="absolute inset-0 border-2 sm:border-3 md:border-4 border-green-500 rounded-lg sm:rounded-xl pointer-events-none z-30"></div>
                   
                   {/* Checkmark badge */}
                   <motion.div
                     initial={{ scale: 0, rotate: -180 }}
                     animate={{ scale: 1, rotate: 0 }}
-                    className="absolute top-3 right-3 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white text-3xl shadow-2xl z-40"
+                    className="absolute top-1 right-1 sm:top-1.5 sm:right-1.5 w-6 h-6 sm:w-8 sm:h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm sm:text-lg shadow-lg z-40"
                   >
                     ✓
                   </motion.div>
@@ -120,14 +120,14 @@ export default function Stage1Sensory({ objects, onObjectSelected }: Stage1Props
               )}
 
               {/* Number badge */}
-              <div className="absolute top-3 left-3 w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-800 font-bold text-xl shadow-lg z-20">
+              <div className="absolute top-1.5 left-1.5 sm:top-2 sm:left-2 w-6 h-6 sm:w-7 sm:h-7 bg-white rounded-full flex items-center justify-center text-gray-800 font-bold text-xs sm:text-sm shadow-md z-20">
                 {index + 1}
               </div>
 
               {/* Hover hint */}
               {!selectedObject && (
-                <div className="absolute bottom-3 left-3 right-3 text-center text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity z-20 bg-black/50 rounded-lg py-1 px-2">
-                  Click để chọn
+                <div className="absolute bottom-1.5 left-1.5 right-1.5 text-center text-white text-[9px] sm:text-[10px] font-medium opacity-0 group-hover:opacity-100 transition-opacity z-20 bg-black/50 rounded py-0.5 px-1">
+                  Chọn
                 </div>
               )}
             </motion.div>
@@ -135,27 +135,15 @@ export default function Stage1Sensory({ objects, onObjectSelected }: Stage1Props
         ))}
       </div>
 
-      {/* Hint */}
-      {!selectedObject && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-20 text-center text-white/90"
-        >
-          <p className="text-lg font-medium">Chọn một hình để bắt đầu</p>
-        </motion.div>
-      )}
-
       {/* Selected message */}
       {selectedObject && (
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          className="absolute bottom-20 text-center"
+          className="absolute bottom-12 sm:bottom-16 text-center px-3"
         >
-          <div className="bg-white rounded-2xl px-8 py-4 shadow-2xl">
-            <p className="text-gray-800 text-xl font-bold">
+          <div className="bg-white rounded-lg sm:rounded-xl px-3 sm:px-5 py-2 sm:py-2.5 shadow-xl">
+            <p className="text-gray-800 text-xs sm:text-sm md:text-base font-bold">
               Đã chọn! Giờ thu thập manh mối thôi
             </p>
           </div>
